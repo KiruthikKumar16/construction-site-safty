@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pillow
+numpy
+python-multipart
+aiofiles
+ultralytics
+opencv-python
+# Note: ultralytics requires a compatible torch installation. Install torch separately if needed:
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu  # example for CPU
