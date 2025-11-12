@@ -1917,8 +1917,10 @@
       // -----------------------
       // Simple client -> backend helper
       // -----------------------
-      const API_URL = "http://127.0.0.1:8000/predict"; // backend endpoint (change if needed)
-      const WS_URL = "ws://127.0.0.1:8000/ws"; // websocket live inference
+      // Resolve API/WS endpoints dynamically to avoid hostname/HTTP(S) mismatches
+      const API_HOST = `${location.protocol}//${location.hostname}:8000`;
+      const API_URL = `${API_HOST}/predict`;
+      const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.hostname}:8000/ws`; // websocket live inference
       let wsLive = null;
       const liveCameras = new Map(); // id -> { ws, imgEl, statusEl }
       let authToken = localStorage.getItem("token") || "";
